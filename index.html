@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>VR Classroom</title>
+    <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+</head>
+<body>
+    <a-scene>
+        <!-- VR Camera (Head Tracking & Movement) -->
+        <a-entity camera wasd-controls position="0 1.6 0"></a-entity>
+
+        <!-- Classroom Walls -->
+        <a-box position="0 2 -5" width="10" height="5" depth="0.1" color="blue"></a-box>  <!-- Back Wall -->
+        <a-box position="-5 2 0" width="0.1" height="5" depth="10" color="blue"></a-box>  <!-- Left Wall -->
+        <a-box position="5 2 0" width="0.1" height="5" depth="10" color="blue"></a-box>  <!-- Right Wall -->
+
+        <!-- Floor & Ceiling -->
+        <a-plane rotation="-90 0 0" width="10" height="10" color="gray"></a-plane>
+        <a-box position="0 5 0" width="10" height="0.1" depth="10" color="white"></a-box>
+
+        <!-- Blackboard -->
+        <a-box position="0 2 -4.9" width="4" height="2" depth="0.1" color="black"></a-box>
+
+        <!-- Teacher -->
+        <a-entity position="0 1 -4">
+            <a-box width="0.8" height="1.6" depth="0.5" color="yellow"></a-box> <!-- Body -->
+            <a-sphere position="0 1 0" radius="0.5" color="pink"></a-sphere> <!-- Head -->
+        </a-entity>
+
+        <!-- Speech Bubble -->
+        <a-entity position="2 2.5 -4.5">
+            <!-- Speech Bubble Background (Rounded) -->
+            <a-plane position="0 0 0" width="3.5" height="2" color="white" opacity="0.8" radius="0.5" segments="4"></a-plane>
+            
+            <!-- Speech Bubble Tail -->
+            <a-cone position="0 -0.8 0" rotation="0 0 0" height="0.8" radius-bottom="0.6" radius-top="0" color="white"></a-cone>
+
+            <!-- Speech Bubble Text -->
+            <a-text value="Good morning class" align="center" position="0 0 0.1" color="black" width="3"></a-text>
+        </a-entity>
+
+        <!-- Student Desks -->
+        <a-box position="-2 0.5 -2" width="1.5" height="1" depth="1" color="brown"></a-box>
+        <a-box position="2 0.5 -2" width="1.5" height="1" depth="1" color="brown"></a-box>
+    </a-scene>
+</body>
+</html>
