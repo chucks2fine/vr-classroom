@@ -5,16 +5,19 @@
     <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
 </head>
 <body>
-    <a-scene vr-mode-ui="enabled: true">
-        <!-- VR Camera with Head Tracking -->
-        <a-entity camera look-controls wasd-controls position="0 1.6 0"></a-entity>
+    <a-scene vr-mode-ui="enabled: true" renderer="antialias: true">
+        <!-- Stereo Camera for VR -->
+        <a-entity position="0 1.6 0">
+            <a-camera stereocam>
+                <a-entity oculus-touch-controls="hand: left"></a-entity>
+                <a-entity oculus-touch-controls="hand: right"></a-entity>
+            </a-camera>
+        </a-entity>
 
-        <!-- Classroom Walls -->
+        <!-- Classroom Environment -->
         <a-box position="0 2 -5" width="10" height="5" depth="0.1" color="blue"></a-box>
         <a-box position="-5 2 0" width="0.1" height="5" depth="10" color="blue"></a-box>
         <a-box position="5 2 0" width="0.1" height="5" depth="10" color="blue"></a-box>
-
-        <!-- Floor & Ceiling -->
         <a-plane rotation="-90 0 0" width="10" height="10" color="gray"></a-plane>
         <a-box position="0 5 0" width="10" height="0.1" depth="10" color="white"></a-box>
 
@@ -33,9 +36,14 @@
             <a-text value="Good morning class" align="center" position="0 0 0.1" color="black" width="3"></a-text>
         </a-entity>
 
-        <!-- Student Desks -->
+        <!-- Desks -->
         <a-box position="-2 0.5 -2" width="1.5" height="1" depth="1" color="brown"></a-box>
         <a-box position="2 0.5 -2" width="1.5" height="1" depth="1" color="brown"></a-box>
     </a-scene>
+
+    <script>
+      // Auto-enter VR mode when opened
+      document.querySelector('a-scene').enterVR();
+    </script>
 </body>
 </html>
